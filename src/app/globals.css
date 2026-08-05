@@ -1,0 +1,266 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------ */
+/* Design tokens                                                        */
+/* ------------------------------------------------------------------ */
+
+@theme {
+  --color-paper: #f7f7f4;
+  --color-ink: #111111;
+  --color-muted: #6b6b6b;
+  --color-surface: #ececE8;
+  --color-line: #e2e2dc;
+  --color-carbon: #151515;
+
+  --color-ember: #ff5a1f;
+  --color-coral: #ff725e;
+  --color-lime: #dfff3f;
+  --color-violet: #6b4eff;
+  --color-cobalt: #2b54f0;
+  --color-ochre: #ffc53d;
+  --color-blush: #ff8fb1;
+
+  --font-sans: var(--font-sans-stack);
+
+  --radius-card: 1.5rem;
+  --radius-plate: 2rem;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Section rhythm — one scale used by every band on the page. */
+  --spacing-section: 7rem;
+  --spacing-section-lg: 11rem;
+}
+
+/* ------------------------------------------------------------------ */
+/* Base                                                                 */
+/* ------------------------------------------------------------------ */
+
+@layer base {
+  * {
+    border-color: var(--color-line);
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+
+  /* Lenis drives scrolling when it is active; native smooth scroll would fight it. */
+  html.lenis {
+    scroll-behavior: auto;
+  }
+
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-synthesis-weight: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* Nothing on this page is meant to scroll sideways. */
+    overflow-x: clip;
+  }
+
+  ::selection {
+    background-color: var(--color-ember);
+    color: #ffffff;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-ember);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    text-wrap: balance;
+    letter-spacing: -0.035em;
+    line-height: 0.94;
+    font-weight: 500;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Typography scale                                                     */
+/* ------------------------------------------------------------------ */
+
+@layer components {
+  .type-display {
+    font-size: clamp(3rem, 8.4vw, 9rem);
+    line-height: 0.9;
+    letter-spacing: -0.045em;
+    font-weight: 500;
+  }
+
+  /*
+   * The hero statement sits directly above the artwork deck, so it is held a
+   * step below `.type-display` — at full display size the third line collides
+   * with the cards.
+   */
+  .type-hero {
+    font-size: clamp(2.5rem, 5.6vw, 5.25rem);
+    line-height: 0.98;
+    letter-spacing: -0.04em;
+    font-weight: 500;
+  }
+
+  .type-h2 {
+    font-size: clamp(2.25rem, 5.4vw, 5rem);
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    font-weight: 500;
+  }
+
+  .type-h3 {
+    font-size: clamp(1.5rem, 2.6vw, 2.25rem);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    font-weight: 500;
+  }
+
+  .type-lead {
+    font-size: clamp(1rem, 1.35vw, 1.25rem);
+    line-height: 1.55;
+    letter-spacing: -0.011em;
+    color: var(--color-muted);
+  }
+
+  .type-label {
+    font-size: 0.6875rem;
+    line-height: 1;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .type-meta {
+    font-size: 0.8125rem;
+    line-height: 1.4;
+    letter-spacing: -0.005em;
+  }
+
+  /* Page gutter, shared by every section so edges line up vertically. */
+  .shell {
+    width: 100%;
+    max-width: 90rem;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+
+  @media (min-width: 768px) {
+    .shell {
+      padding-inline: 2.5rem;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .shell {
+      padding-inline: 4rem;
+    }
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Utilities                                                            */
+/* ------------------------------------------------------------------ */
+
+@utility hairline {
+  border-top: 1px solid var(--color-line);
+}
+
+/* Fades the leading and trailing edge of a marquee track. */
+@utility edge-fade {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 6%,
+    #000 94%,
+    transparent
+  );
+  mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+}
+
+@utility no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Marquees                                                             */
+/* ------------------------------------------------------------------ */
+
+/*
+ * Tracks render their content twice; translating exactly -50% lands the second
+ * copy where the first began, so the loop has no visible seam.
+ */
+@keyframes marquee-left {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes marquee-right {
+  from {
+    transform: translate3d(-50%, 0, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation-duration: var(--marquee-duration, 60s);
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-name: marquee-left;
+}
+
+.marquee-track[data-direction="right"] {
+  animation-name: marquee-right;
+}
+
+.marquee-group:hover .marquee-track,
+.marquee-group:focus-within .marquee-track {
+  animation-play-state: paused;
+}
+
+/* ------------------------------------------------------------------ */
+/* Reduced motion                                                       */
+/* ------------------------------------------------------------------ */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .marquee-track {
+    animation: none !important;
+    transform: none !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
