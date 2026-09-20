@@ -12,6 +12,15 @@ The focus is responsive layout, scroll animation, reusable motion components, an
 
 Captured from the running application. MOTIONA is a single-page site; the desktop views show different sections of that page.
 
+<details>
+<summary>Watch the artwork respond to pointer movement</summary>
+
+![Live capture of the MOTIONA hero artwork responding to pointer movement](docs/screenshots/motion-preview.gif)
+
+Recorded from the local application. To recreate it, set `CHROME_PATH` and run `node scripts/capture-demo.mjs` while the site runs on port 3015.
+
+</details>
+
 ### Landing
 
 ![MOTIONA desktop landing section with headline and animated artwork cards](docs/screenshots/desktop-home.png)
