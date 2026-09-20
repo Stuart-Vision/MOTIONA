@@ -1,30 +1,12 @@
 # MOTIONA
 
-**A place where art, identity and technology connect.**
+MOTIONA is a frontend portfolio project for an art discovery platform, built with Next.js, TypeScript, and Framer Motion.
 
-MOTIONA is a creative art platform and artist-discovery site — a single-page,
-editorially art-directed landing experience for an independent art platform. It
-is built as a production-quality Next.js application: typed data, reusable
-motion primitives, a token-driven design system, and generated original artwork
-so the project ships with no third-party imagery.
+The focus is responsive layout, scroll animation, reusable motion components, and generated artwork. Artist profiles and editorial content are created for this project.
 
-The brand, copy, artwork, artist profiles and editorial content are all original
-to this project.
+**Scope:** Membership, newsletter, search, and account features are interface demonstrations. There is no payment or newsletter backend.
 
----
-
-## Screenshots
-
-Add captures here once you have deployed or run the site locally.
-
-| View | File |
-| --- | --- |
-| Desktop — hero and artwork cluster | `docs/screenshot-hero.png` |
-| Desktop — editorial grid | `docs/screenshot-editorial.png` |
-| Desktop — membership | `docs/screenshot-membership.png` |
-| Mobile — navigation panel | `docs/screenshot-mobile-menu.png` |
-
-> `docs/` is not created by the repo — add the folder alongside your captures.
+[Setup](#getting-started) · [Animation architecture](#animation-architecture) · [Accessibility](#accessibility) · [Scope](#scope)
 
 ---
 
