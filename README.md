@@ -6,7 +6,44 @@ The focus is responsive layout, scroll animation, reusable motion components, an
 
 **Scope:** Membership, newsletter, search, and account features are interface demonstrations. There is no payment or newsletter backend.
 
-[Setup](#getting-started) · [Animation architecture](#animation-architecture) · [Accessibility](#accessibility) · [Scope](#scope)
+[Screenshots](#screenshots) · [Setup](#getting-started) · [Animation architecture](#animation-architecture) · [Accessibility](#accessibility) · [Scope](#scope)
+
+## Screenshots
+
+Captured from the running application. MOTIONA is a single-page site; the desktop views show different sections of that page.
+
+### Landing
+
+![MOTIONA desktop landing section with headline and animated artwork cards](docs/screenshots/desktop-home.png)
+
+<details>
+<summary>Editorial and membership</summary>
+
+### Editorial
+
+![Editorial section with art stories and a magazine-style card layout](docs/screenshots/desktop-editorial.png)
+
+### Membership
+
+![Membership section with billing toggle and three pricing cards](docs/screenshots/desktop-membership.png)
+
+</details>
+
+### Mobile
+
+<p>
+  <img src="docs/screenshots/mobile-home.png" alt="MOTIONA landing section at mobile width" width="300" />
+  <img src="docs/screenshots/mobile-navigation.png" alt="Expanded mobile navigation with section links" width="300" />
+</p>
+
+<details>
+<summary>Recreate these screenshots</summary>
+
+Start the site with `npm run dev -- --port 3015`. In another terminal, set `CHROME_PATH` to a local Chrome or Chromium executable and run `node scripts/capture-readme.mjs`. Set `CAPTURE_URL` if the app runs at another address.
+
+Desktop captures use a 1440 × 1000 viewport; mobile captures use 390 × 844. The script waits for fonts and entrance animations, and hides the Next.js development indicator.
+
+</details>
 
 ---
 
