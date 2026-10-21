@@ -1,5 +1,7 @@
 # MOTIONA
 
+**Live demo:** [motiona-bice.vercel.app](https://motiona-bice.vercel.app)
+
 MOTIONA is a frontend portfolio project for an art discovery platform, built with Next.js, TypeScript, and Framer Motion.
 
 The focus is responsive layout, scroll animation, reusable motion components, and generated artwork. Artist profiles and editorial content are created for this project.
